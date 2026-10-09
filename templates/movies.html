@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies - MovieBook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h2>🎬 MovieBook</h2>
+        <div>
+            <a href="/">Home</a>
+            <a href="/movies">Movies</a>
+            <a href="/bookings">Bookings</a>
+            <a href="/admin">Admin</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 35px;">
+            🎬 Available Movies
+        </h1>
+
+        <!-- Search and filters -->
+        <form method="GET" action="/movies"
+              style="max-width: 900px; margin: 0 auto 35px;">
+
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ search }}"
+                    placeholder="🔍 Search movie by title..."
+                    style="flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px;"
+                >
+                <button type="submit" class="btn">Search</button>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <select name="genre"
+                        style="flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px;">
+                    <option value="">🎭 All Genres</option>
+                    {% for item in genres %}
+                        <option value="{{ item }}"
+                            {% if genre == item %}selected{% endif %}>
+                            {{ item }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <select name="language"
+                        style="flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px;">
+                    <option value="">🌐 All Languages</option>
+                    {% for item in languages %}
+                        <option value="{{ item }}"
+                            {% if language == item %}selected{% endif %}>
+                            {{ item }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+
+        <!-- Movie cards -->
+        {% if movies %}
+            <div class="movie-grid">
+                {% for movie in movies %}
+                    <div class="movie-card">
+
+                        <div class="movie-poster">
+                            {% if movie.title == "Bahubali" %}
+                                <img src="{{ url_for('static', filename='images/bahubali.jpg') }}"
+                                     alt="{{ movie.title }}">
+
+                            {% elif movie.title == "RRR" %}
+                                <img src="{{ url_for('static', filename='images/rrr.jpg') }}"
+                                     alt="{{ movie.title }}">
+
+                            {% elif movie.title == "Pushpa 2" %}
+                                <img src="{{ url_for('static', filename='images/pushpa2.jpg') }}"
+                                     alt="{{ movie.title }}">
+
+                            {% elif movie.title == "sanam teri kasam" %}
+                                <img src="{{ url_for('static', filename='images/sanam teri kasam.jpg') }}"
+                                     alt="{{ movie.title }}">
+
+                            {% else %}
+                                🎬
+                            {% endif %}
+                        </div>
+
+                        <h2>{{ movie.title }}</h2>
+
+                        <p><strong>Genre:</strong> {{ movie.genre }}</p>
+                        <p><strong>Language:</strong> {{ movie.language }}</p>
+                        <p><strong>Duration:</strong> {{ movie.duration }} minutes</p>
+                        <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+
+                        <br>
+
+                        <a href="/shows/{{ movie.movie_id }}" class="btn">
+                            View Shows
+                        </a>
+
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="form-card">
+                <h2>No movies available.</h2>
+            </div>
+        {% endif %}
+
+        <!-- One Back to Home button, outside the movie loop -->
+        <div class="back-home" style="text-align: center; margin: 30px 0;">
+            <a href="/" class="btn">⬅️ Back to Home</a>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 MovieBook | Movie Ticket Booking System</p>
+    </footer>
+
+</body>
+</html>

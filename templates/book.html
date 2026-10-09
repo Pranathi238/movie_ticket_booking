@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Ticket - MovieBook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>🎬 MovieBook</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/movies">Movies</a>
+            <a href="/bookings">Bookings</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1 style="text-align: center; margin-bottom: 30px;">
+            🎟️ Book Your Ticket
+        </h1>
+
+        <!-- Show Details -->
+
+        <div class="show-card">
+
+            <h2>🎬 {{ show.title }}</h2>
+
+            <p>
+                🏢 <strong>Theater:</strong>
+                {{ show.theater }}
+            </p>
+
+            <p>
+                📅 <strong>Date:</strong>
+                {{ show.show_date }}
+            </p>
+
+            <p>
+                🕐 <strong>Time:</strong>
+                {{ show.show_time }}
+            </p>
+
+            <p>
+                💰 <strong>Ticket Price:</strong>
+                ₹{{ show.price }}
+            </p>
+
+        </div>
+
+
+        <!-- Customer Form -->
+
+        <div class="form-card">
+
+            <h2 style="margin-bottom: 25px;">
+                👤 Customer Details
+            </h2>
+
+            <form method="POST">
+
+                <label>
+                    <strong>Name</strong>
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <label>
+                    <strong>Email</strong>
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label>
+                    <strong>Phone</strong>
+                </label>
+
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    required
+                >
+
+
+                <label>
+                    <strong>💺 Select Seat</strong>
+                </label>
+
+                <label>
+    <strong>💺 Select Your Seat</strong>
+</label>
+
+<div class="screen">
+    SCREEN
+</div>
+
+<div class="seat-container">
+
+    {% for row in ['A', 'B', 'C', 'D', 'E'] %}
+
+        <div class="seat-row">
+
+            {% for number in range(1, 6) %}
+
+                {% set seat = row ~ number %}
+
+                {% if seat in booked_seats %}
+
+                    <button
+                        type="button"
+                        class="seat booked"
+                        disabled>
+                        {{ seat }}
+                    </button>
+
+                {% else %}
+
+                    <button
+                        type="button"
+                        class="seat available"
+                        onclick="selectSeat('{{ seat }}', this)">
+                        {{ seat }}
+                    </button>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+<input
+    type="hidden"
+    name="seat"
+    id="selected-seat"
+    required
+>
+
+<p id="selected-seat-text"
+   style="text-align: center; margin: 15px 0; font-weight: bold;">
+    No seat selected
+</p>
+
+
+                <button type="submit" class="btn">
+                    🎟️ Confirm Booking
+                </button>
+
+            </form>
+
+        </div>
+
+        <br>
+
+        <div style="text-align: center;">
+
+            <a href="/movies" class="btn">
+                ← Back to Movies
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 MovieBook | Movie Ticket Booking System
+        </p>
+
+    </footer>
+
+
+<script>
+
+function selectSeat(seat, button) {
+
+    // Remove previous selection
+    document.querySelectorAll(".seat.available")
+        .forEach(function(btn) {
+            btn.classList.remove("selected");
+        });
+
+    // Select current seat
+    button.classList.add("selected");
+
+    // Store selected seat
+    document.getElementById("selected-seat").value = seat;
+
+    // Display selected seat
+    document.getElementById("selected-seat-text").innerText =
+        "Selected Seat: " + seat;
+}
+
+</script>
+
+
+</body>
+</html>

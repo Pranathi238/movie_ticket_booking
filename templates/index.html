@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>🎬 MovieBook</h2>
+
+        <div>
+           
+            <a href="/">Home</a>
+            <a href="/movies">Movies</a>
+            <a href="/bookings">Bookings</a>
+            <a href="/admin">Admin</a>
+
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <section class="hero">
+            <h1>🎬 Movie Ticket Booking</h1>
+
+            <p>
+                Book your favorite movies quickly and easily.
+            </p>
+
+            <a href="/movies" class="btn">
+                Browse Movies
+            </a>
+        </section>
+
+        <h2 style="text-align: center; margin-bottom: 25px;">
+            Why Choose MovieBook?
+        </h2>
+
+        <div class="movie-grid">
+
+            <div class="movie-card">
+                <h2>🎥 Easy Booking</h2>
+                <p>
+                    Choose your favorite movie, select a show,
+                    and book your ticket easily.
+                </p>
+            </div>
+
+            <div class="movie-card">
+                <h2>💺 Seat Selection</h2>
+                <p>
+                    Select your preferred seat and avoid
+                    already booked seats.
+                </p>
+            </div>
+
+            <div class="movie-card">
+                <h2>🎟️ Booking History</h2>
+                <p>
+                    View your previous movie bookings
+                    whenever you need.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 MovieBook | Movie Ticket Booking System</p>
+    </footer>
+
+</body>
+</html>

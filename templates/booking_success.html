@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmed - MovieBook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>🎬 MovieBook</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/movies">Movies</a>
+            <a href="/bookings">Bookings</a>
+        </div>
+    </nav>
+
+
+    <div class="container">
+
+        <div class="success">
+
+            <div style="text-align: center;">
+
+                <h1>🎉 Booking Confirmed!</h1>
+
+                <p style="margin-top: 10px;">
+                    Your movie ticket has been successfully booked.
+                </p>
+
+            </div>
+
+            <hr style="margin: 30px 0;">
+
+
+            <h2 style="margin-bottom: 20px;">
+                🎟️ Ticket Details
+            </h2>
+
+
+            <p>
+                <strong>Booking ID:</strong>
+                #{{ booking.booking_id }}
+            </p>
+
+            <p>
+                <strong>Customer:</strong>
+                {{ booking.name }}
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                {{ booking.email }}
+            </p>
+
+            <p>
+                <strong>Phone:</strong>
+                {{ booking.phone }}
+            </p>
+
+            <hr style="margin: 25px 0;">
+
+
+            <p>
+                <strong>🎬 Movie:</strong>
+                {{ booking.title }}
+            </p>
+
+            <p>
+                <strong>🏢 Theater:</strong>
+                {{ booking.theater }}
+            </p>
+
+            <p>
+                <strong>📅 Date:</strong>
+                {{ booking.show_date }}
+            </p>
+
+            <p>
+                <strong>🕐 Time:</strong>
+                {{ booking.show_time }}
+            </p>
+
+            <p>
+                <strong>💺 Seat:</strong>
+                {{ booking.seat_number }}
+            </p>
+
+            <p>
+                <strong>💰 Total Amount:</strong>
+                ₹{{ booking.total_amount }}
+            </p>
+
+
+            <hr style="margin: 25px 0;">
+
+
+            <div style="text-align: center;">
+
+                <p>
+                    Please arrive at the theater before the show starts.
+                </p>
+
+                <br>
+
+                <a href="/movies" class="btn">
+                    🎬 Book Another Ticket
+                </a>
+
+                &nbsp;
+
+                <a href="/bookings" class="btn">
+                    📋 Booking History
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 MovieBook | Movie Ticket Booking System
+        </p>
+
+    </footer>
+
+</body>
+</html>

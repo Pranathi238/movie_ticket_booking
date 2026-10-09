@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - MovieBook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>🎬 MovieBook Admin</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/movies">Movies</a>
+            <a href="/bookings">Bookings</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="movie-grid">
+
+    <div class="movie-card">
+        <h2>🎬 Movies</h2>
+        <h1 class="stats-number">{{ total_movies }}</h1>
+        <p>Total movies available</p>
+    </div>
+
+    <div class="movie-card">
+        <h2>🎟️ Shows</h2>
+        <h1 class="stats-number">{{ total_shows }}</h1>
+        <p>Total shows available</p>
+    </div>
+
+    <div class="movie-card">
+        <h2>📋 Bookings</h2>
+        <h1 class="stats-number">{{ total_bookings }}</h1>
+        <p>Total bookings made</p>
+    </div>
+
+</div>
+
+        <h1 style="text-align: center; margin-bottom: 10px;">
+            🛠️ Admin Dashboard
+        </h1>
+
+        <p style="text-align: center; margin-bottom: 35px;">
+            Manage movies, shows and bookings
+        </p>
+
+        <div class="movie-grid">
+
+            <!-- Add Movie -->
+            <div class="movie-card">
+                <h2>🎬 Add New Movie</h2>
+
+                <p>
+                    Add a new movie to the MovieBook system.
+                </p>
+
+                <br>
+
+                <a href="/admin/add-movie" class="btn">
+                    ➕ Add Movie
+                </a>
+            </div>
+
+            <!-- Add Show -->
+            <div class="movie-card">
+                <h2>🎟️ Add New Show</h2>
+
+                <p>
+                    Create a movie show with theater, date, time and ticket price.
+                </p>
+
+                <br>
+
+                <a href="/admin/add-show" class="btn">
+                    ➕ Add Show
+                </a>
+            </div>
+
+            <!-- View Bookings -->
+            <div class="movie-card">
+                <h2>📋 Bookings</h2>
+
+                <p>
+                    View all customer movie bookings.
+                </p>
+
+                <br>
+
+                <a href="/bookings" class="btn">
+                    View Bookings
+                </a>
+            </div>
+
+            <!-- Manage Movies -->
+            <div class="movie-card">
+                <h2>🎥 Manage Movies</h2>
+
+                <p>
+                    View movies and manage movie records.
+                </p>
+
+                <br>
+
+                <a href="/movies" class="btn">
+                    Manage Movies
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 MovieBook | Admin Dashboard</p>
+    </footer>
+
+</body>
+</html>

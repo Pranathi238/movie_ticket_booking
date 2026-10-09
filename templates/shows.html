@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shows - MovieBook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>🎬 MovieBook</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/movies">Movies</a>
+            <a href="/bookings">Bookings</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        {% if shows %}
+
+            <h1 style="text-align: center; margin-bottom: 10px;">
+                🎬 {{ shows[0].title }}
+            </h1>
+
+            <p style="text-align: center; margin-bottom: 35px;">
+                Select a show to book your ticket
+            </p>
+
+            {% for show in shows %}
+
+            <div class="show-card">
+
+                <h2>🏢 {{ show.theater }}</h2>
+
+                <p>
+                    📅 <strong>Date:</strong>
+                    {{ show.show_date }}
+                </p>
+
+                <p>
+                    🕐 <strong>Time:</strong>
+                    {{ show.show_time }}
+                </p>
+
+                <p>
+                    💰 <strong>Ticket Price:</strong>
+                    ₹{{ show.price }}
+                </p>
+
+                <br>
+
+                <a href="/book/{{ show.show_id }}" class="btn">
+                    🎟️ Book Ticket
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="form-card">
+                <h2>No shows available</h2>
+                <p>There are currently no shows available for this movie.</p>
+            </div>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/movies" class="btn">
+            ← Back to Movies
+        </a>
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 MovieBook | Movie Ticket Booking System</p>
+    </footer>
+
+</body>
+</html>

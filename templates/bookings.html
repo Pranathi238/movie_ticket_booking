@@ -1,0 +1,168 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Booking History - MovieBook</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <h2>🎬 MovieBook</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/movies">Movies</a>
+        <a href="/bookings">Bookings</a>
+        <a href="/admin">Admin</a>
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+    <h1 style="text-align: center; margin-bottom: 10px;">
+        📋 Booking History
+    </h1>
+
+    <p style="text-align: center; margin-bottom: 35px;">
+        View all movie tickets booked through MovieBook.
+    </p>
+
+
+    {% if bookings %}
+
+        {% for booking in bookings %}
+
+            <div class="booking-card">
+
+                <h2>🎬 {{ booking.title }}</h2>
+
+                <p>
+                    <strong>Booking ID:</strong>
+                    #{{ booking.booking_id }}
+                </p>
+
+                <p>
+                    <strong>👤 Customer:</strong>
+                    {{ booking.name }}
+                </p>
+
+                <p>
+                    <strong>📧 Email:</strong>
+                    {{ booking.email }}
+                </p>
+
+                <p>
+                    <strong>🏢 Theater:</strong>
+                    {{ booking.theater }}
+                </p>
+
+                <p>
+                    <strong>📅 Date:</strong>
+                    {{ booking.show_date }}
+                </p>
+
+                <p>
+                    <strong>🕐 Time:</strong>
+                    {{ booking.show_time }}
+                </p>
+
+                <p>
+                    <strong>💺 Seat:</strong>
+                    {{ booking.seat_number }}
+                </p>
+
+                <p>
+                    <strong>💰 Amount:</strong>
+                    ₹{{ booking.total_amount }}
+                </p>
+
+                <p>
+                    <strong>📝 Booked On:</strong>
+                    {{ booking.booking_date }}
+                </p>
+
+
+                <!-- Cancel Booking -->
+
+                <form action="/cancel-booking/{{ booking.booking_id }}"
+                      method="POST"
+                      style="margin-top: 15px;"
+                      onsubmit="return confirm('Are you sure you want to cancel this booking?');">
+
+                    <button type="submit"
+                            class="btn"
+                            style="background-color: #dc2626;">
+                        ❌ Cancel Booking
+                    </button>
+
+                </form>
+
+            </div>
+
+        {% endfor %}
+
+
+        <!-- Navigation Buttons -->
+
+        <div style="text-align: center; margin-top: 30px;">
+
+            <a href="/movies" class="btn">
+                🎬 Browse Movies
+            </a>
+
+            <a href="/admin"
+               class="btn"
+               style="margin-left: 10px;">
+                ⬅️ Back to Admin Dashboard
+            </a>
+
+        </div>
+
+
+    {% else %}
+
+        <div class="form-card" style="text-align: center;">
+
+            <h2>No Bookings Found</h2>
+
+            <p style="margin: 15px 0;">
+                You haven't booked any movie tickets yet.
+            </p>
+
+            <a href="/movies" class="btn">
+                🎬 Browse Movies
+            </a>
+
+            <a href="/admin"
+               class="btn"
+               style="margin-left: 10px;">
+                ⬅️ Back to Admin Dashboard
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+<footer class="footer">
+
+    <p>
+        © 2026 MovieBook | Movie Ticket Booking System
+    </p>
+
+</footer>
+
+</body>
+
+</html>
+```

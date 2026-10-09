@@ -1,0 +1,388 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+.navbar {
+    background-color: #111827;
+    padding: 18px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h2 {
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #ff4d6d;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.hero {
+    background: linear-gradient(135deg, #111827, #4f46e5);
+    color: white;
+    padding: 80px 30px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ff4d6d;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #e63956;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.movie-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card h2 {
+    margin-bottom: 15px;
+}
+
+.movie-card p {
+    margin: 8px 0;
+    color: #555;
+}
+
+.show-card {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.form-card {
+    background: white;
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.form-card input,
+.form-card select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.success {
+    background: white;
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.booking-card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.footer {
+    margin-top: 60px;
+    background-color: #111827;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.stats-number {
+    font-size: 40px;
+    margin: 15px 0;
+}
+
+.screen {
+    background-color: #111827;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 20px auto;
+    max-width: 500px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.seat-container {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.seat {
+    width: 55px;
+    height: 45px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.seat.available {
+    background-color: #22c55e;
+    color: white;
+}
+
+.seat.available:hover {
+    transform: scale(1.05);
+}
+
+.seat.selected {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.seat.booked {
+    background-color: #ef4444;
+    color: white;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   PROFESSIONAL NAVIGATION
+   ========================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navbar a {
+    transition: 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ff4d6d;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   BUTTON IMPROVEMENTS
+   ========================================= */
+
+.btn {
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   MOVIE CARD IMPROVEMENTS
+   ========================================= */
+
+.movie-card {
+    transition: all 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   SHOW CARD IMPROVEMENTS
+   ========================================= */
+
+.show-card {
+    transition: all 0.3s ease;
+}
+
+.show-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   BOOKING CARD
+   ========================================= */
+
+.booking-card {
+    transition: all 0.3s ease;
+}
+
+.booking-card:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar a {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .movie-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .seat {
+        width: 45px;
+        height: 40px;
+        font-size: 12px;
+    }
+
+    .seat-row {
+        gap: 6px;
+    }
+}
+
+.movie-poster {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #111827, #4f46e5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+/* =========================================
+   PROFESSIONAL MOVIE CARDS
+   ========================================= */
+
+.movie-card h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.movie-card p {
+    line-height: 1.6;
+}
+
+.movie-card .btn {
+    margin-top: 12px;
+    margin-right: 5px;
+}
+
+
+/* Movie poster hover effect */
+
+.movie-poster {
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster {
+    transform: scale(1.02);
+}
+
+
+/* Movie information */
+
+.movie-info {
+    margin-top: 10px;
+}
+
+.movie-info strong {
+    color: #111827;
+}

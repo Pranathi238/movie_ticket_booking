@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Show - MovieBook</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <h2>🎬 MovieBook Admin</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/movies">Movies</a>
+            <a href="/admin">Admin</a>
+        </div>
+
+    </nav>
+
+
+    <div class="container">
+
+        <div class="form-card">
+
+            <h1 style="margin-bottom: 25px;">
+                🎟️ Add New Show
+            </h1>
+
+
+            <form method="POST">
+
+                <label>
+                    <strong>Select Movie</strong>
+                </label>
+
+                <select name="movie_id" required>
+
+                    <option value="">
+                        -- Select Movie --
+                    </option>
+
+                    {% for movie in movies %}
+
+                        <option value="{{ movie.movie_id }}">
+                            {{ movie.title }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+
+                <label>
+                    <strong>Theater</strong>
+                </label>
+
+                <input
+                    type="text"
+                    name="theater"
+                    placeholder="Example: PVR Cinemas"
+                    required
+                >
+
+
+                <label>
+                    <strong>Show Date</strong>
+                </label>
+
+                <input
+                    type="date"
+                    name="show_date"
+                    required
+                >
+
+
+                <label>
+                    <strong>Show Time</strong>
+                </label>
+
+                <input
+                    type="time"
+                    name="show_time"
+                    required
+                >
+
+
+                <label>
+                    <strong>Ticket Price</strong>
+                </label>
+
+                <input
+                    type="number"
+                    name="price"
+                    placeholder="Example: 250"
+                    min="1"
+                    required
+                >
+
+
+                <button type="submit" class="btn">
+                    ➕ Add Show
+                </button>
+            
+                <br><br>
+
+                     <a href="/admin" class="btn">
+                          ⬅️ Back to Admin Dashboard
+                    </a>        
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 MovieBook | Admin Dashboard
+        </p>
+
+    </footer>
+
+</body>
+</html>
